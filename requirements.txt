@@ -6,7 +6,7 @@ plotly
 # PANDAS — handles our data like a smart spreadsheet inside Python.
 # We use it to load the CSV, clean missing values, filter rows, etc.
 pandas
-
+statsmodels
 # NUMPY — does the actual number-crunching behind the scenes.
 # We use it mainly for log-transforming price:
 #   log_price = log(1 + price)   →   np.log1p(price)
