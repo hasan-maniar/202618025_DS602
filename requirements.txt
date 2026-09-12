@@ -1,0 +1,56 @@
+# ===================================================================
+# requirements.txt — Airbnb Price Prediction Project
+# Plain-English guide: what each library does and why we need it
+# ===================================================================
+
+# PANDAS — handles our data like a smart spreadsheet inside Python.
+# We use it to load the CSV, clean missing values, filter rows, etc.
+pandas
+
+# NUMPY — does the actual number-crunching behind the scenes.
+# We use it mainly for log-transforming price:
+#   log_price = log(1 + price)   →   np.log1p(price)
+# and reversing it back to dollars later:
+#   price = e^(log_price) - 1    →   np.expm1(log_price)
+# Why log? Airbnb prices have a few very expensive listings that
+# skew everything. Taking the log "squashes" those extremes so the
+# model learns patterns more evenly instead of getting distracted
+# by outliers.
+numpy
+
+# SCIKIT-LEARN — the actual machine learning toolkit. This does:
+#  - Splitting data into "train" (learn from) and "test" (check on)
+#  - Filling missing values (imputing)
+#  - Turning text categories (like "Manhattan") into numbers
+#  - Training the models themselves
+#  - Scoring how good the model is
+# Pinned to an exact version because ML models saved with one
+# version can break when loaded with a different one — this bit us
+# already, so we lock it down to avoid it happening again.
+scikit-learn==1.9.1
+
+# SCIPY — a math library that scikit-learn quietly depends on
+# under the hood (things like statistics and optimization).
+# You don't call it directly, but sklearn needs it to work.
+scipy
+
+# MATPLOTLIB — draws basic charts/graphs (the plain building blocks).
+# We use it to save our plots as .png image files.
+matplotlib
+
+# SEABORN — sits on top of matplotlib and makes nicer-looking charts
+# with way less code. We use it for:
+#  - Histogram of prices (shows the price distribution)
+#  - Boxplot comparing prices by room type
+#  - Heatmap of correlations (shows which features move together)
+seaborn
+
+# JOBLIB — saves our trained model to a file (like "File > Save"
+# for a machine learning model) so we don't have to retrain it
+# every time. Also loads it back later inside the app.
+joblib
+
+# STREAMLIT — turns our Python code into a simple, clickable
+# website with almost no extra work. The dropdowns, sliders, and
+# "Predict Price" button in app.py all come from this library.
+streamlit
