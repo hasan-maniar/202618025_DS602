@@ -2,7 +2,7 @@
 # requirements.txt — Airbnb Price Prediction Project
 # Plain-English guide: what each library does and why we need it
 # ===================================================================
-
+# plotly
 # PANDAS — handles our data like a smart spreadsheet inside Python.
 # We use it to load the CSV, clean missing values, filter rows, etc.
 pandas
